@@ -327,7 +327,7 @@ function computerPlayer(){
 
     for(let i = 0; i< boxes.length;i++){
 
-        let randonNumber = Math.floor(Math.random() * 3);
+        let randonNumber = Math.floor(Math.random() * 5);
         
         //verificando se os espaços estão vazios para preenchelos
         if(boxes[i].childNodes[0] == undefined){
