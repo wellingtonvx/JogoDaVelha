@@ -1,7 +1,7 @@
 let x = document.querySelector(".x");
 let o = document.querySelector(".o");
 let boxes = document.querySelectorAll(".box");
-let buttons = document.querySelectorAll("#buttouns-container button");
+let buttons = document.querySelectorAll("#buttons-container button");
 let messageContainer = document.querySelector("#message");
 let messageText = document.querySelector("#message p");
 let secondPlayer;
@@ -18,7 +18,8 @@ for(let i = 0; i < buttons.length; i++){
     
     buttons[i].addEventListener("click", function(){
         
-        secondPlayer = this.getAttribute('id');
+        secondPlayer = this.getAttribute("id");
+        
 
         for(let j = 0; j < buttons.length; j++){
             buttons[j].style.display = 'none';
@@ -28,23 +29,8 @@ for(let i = 0; i < buttons.length; i++){
             let container = document.querySelector('#container');
 
             container.classList.remove('hide')
-        }, 500)
+        }, 300)
     })
-}
-
-
-
-//checando qual jogador vai jogar
-function checkPlayer(player1, player2){
-
-    if(player1 == player2){
-        elemento = x;
-    }else{
-        elemento = o;
-    }
-
-    return elemento;
-
 }
 
 
@@ -71,12 +57,13 @@ for(let i = 0; i < boxes.length; i++){
                 if(player1 == player2){
                     player1++;
 
-                    if( secondPlayer == "Ia-player"){
+                    if( secondPlayer == "ai-player"){
+                       
                         //executando a jogada do player 2
                         computerPlayer();
 
-
                         player2++;
+                
                     }
 
                 }else{
@@ -91,6 +78,22 @@ for(let i = 0; i < boxes.length; i++){
 
 
 }
+
+
+
+//checando qual jogador vai jogar
+function checkPlayer(player1, player2){
+
+    if(player1 == player2){
+        elemento = x;
+    }else{
+        elemento = o;
+    }
+
+    return elemento;
+
+}
+
 
 
 function checkWinCondition(){
@@ -324,7 +327,7 @@ function computerPlayer(){
 
     for(let i = 0; i< boxes.length;i++){
 
-        let randonNumber = Math.floor(Math.randon() * 5);
+        let randonNumber = Math.floor(Math.random() * 3);
         
         //verificando se os espaços estão vazios para preenchelos
         if(boxes[i].childNodes[0] == undefined){
@@ -336,9 +339,11 @@ function computerPlayer(){
         }else{
             preenchido++;
         }
-
-        if(contador == 0 && preenchido <9){
-            computerPlayer()
-        }
+        
     }
+
+    if(contador == 0 && preenchido < 9){
+        computerPlayer();
+    }
+
 }
